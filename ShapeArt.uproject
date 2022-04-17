@@ -1,0 +1,22 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{5BDD6A0B-4FE8-C691-CF88-C8B0D76B3BB9}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "ShapeArt",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		}
+	]
+}
