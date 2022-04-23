@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+	<GoogleTestAdapterSettings>
+		<SolutionSettings>
+			<Settings>
+				<BreakOnFailure>false</BreakOnFailure>
+				<CatchExceptions>true</CatchExceptions>
+				<DebugMode>false</DebugMode>
+				<TimestampMode>Automatic</TimestampMode>
+				<SeverityMode>Automatic</SeverityMode>
+				<SummaryMode>Error</SummaryMode>
+				<PrefixOutputWithGta>true</PrefixOutputWithGta>
+				<MaxNrOfThreads>4</MaxNrOfThreads>
+				<NrOfTestRepetitions>1</NrOfTestRepetitions>
+				<ParallelTestExecution>true</ParallelTestExecution>
+				<PrintTestOutput>true</PrintTestOutput>
+				<RunDisabledTests>false</RunDisabledTests>
+				<ShuffleTests>false</ShuffleTests>
+				<ShuffleTestsSeed>0</ShuffleTestsSeed>
+				<TestDiscoveryRegex>SketchTest.exe</TestDiscoveryRegex>
+				<TestDiscoveryTimeoutInSeconds>30</TestDiscoveryTimeoutInSeconds>
+				<WorkingDir>$(SolutionDir)</WorkingDir>
+			</Settings>
+		</SolutionSettings>
+		<ProjectSettings/>
+	</GoogleTestAdapterSettings>
+</RunSettings>

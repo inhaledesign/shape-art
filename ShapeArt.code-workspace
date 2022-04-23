@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"name": "ShapeArt",
+			"path": "."
+		},
+		{
+			"name": "UE5",
+			"path": "C:\\Users\\bob\\Documents\\UE5"
+		}
+	],
+	"settings": {
+		"typescript.tsc.autoDetect": "off"
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"ms-dotnettools.csharp"
+		]
+	}
+}

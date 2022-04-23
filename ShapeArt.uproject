@@ -7,6 +7,16 @@
 		{
 			"Name": "ShapeArt",
 			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine",
+				"ProceduralMeshComponent",
+				"FunctionalTesting"
+			]
+		},
+		{
+			"Name": "Sketch",
+			"Type": "RuntimeAndProgram",
 			"LoadingPhase": "Default"
 		}
 	],
@@ -17,6 +27,10 @@
 			"TargetAllowList": [
 				"Editor"
 			]
+		},
+		{
+			"Name": "FunctionalTestingEditor",
+			"Enabled": true
 		}
 	]
 }
