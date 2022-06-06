@@ -1,6 +1,7 @@
 #include "PolygonSketch.h"
 #include "gtest/gtest.h"
 
+
 class PolygonSketchTest : public ::testing::Test {
 protected:
 	PolygonSketch Polygon {};

@@ -4,14 +4,14 @@ using System.IO;
 namespace UnrealBuildTool.Rules
 {
 
-    public class GoogleTest : ModuleRules
+    public class GoogleTestModule : ModuleRules
     {
-        public GoogleTest(ReadOnlyTargetRules Target) : base(Target)
+        public GoogleTestModule(ReadOnlyTargetRules Target) : base(Target)
         {
             Type = ModuleType.External;
             PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
-            string googleTestBasePath = Path.Combine(ModuleDirectory, "googletest-release-1.11.0");
 
+            string googleTestBasePath = Path.Combine(ModuleDirectory, "googletest-release-1.11.0");
             PublicSystemIncludePaths.Add(Path.Combine(googleTestBasePath, "googlemock"));
             PublicSystemIncludePaths.Add(Path.Combine(googleTestBasePath, "googlemock", "src"));
             PublicSystemIncludePaths.Add(Path.Combine(googleTestBasePath, "googlemock", "include"));
@@ -19,11 +19,27 @@ namespace UnrealBuildTool.Rules
             PublicSystemIncludePaths.Add(Path.Combine(googleTestBasePath, "googletest", "src"));
             PublicSystemIncludePaths.Add(Path.Combine(googleTestBasePath, "googletest", "include"));
 
-            PublicDefinitions.Add("GTEST_OS_WINDOWS=1");
+            if (Target.Platform == UnrealTargetPlatform.Win64)
+            {
+                PublicDefinitions.Add("GTEST_OS_WINDOWS=1");
+                PublicDefinitions.Add("GTEST_OS_MAC=0");
+                PublicDefinitions.Add("GTEST_OS_LINUX=0");
+            }
+            else if (Target.Platform == UnrealTargetPlatform.Mac)
+            {
+                PublicDefinitions.Add("GTEST_OS_MAC=1");
+                PublicDefinitions.Add("GTEST_OS_WINDOWS=0");
+                PublicDefinitions.Add("GTEST_OS_LINUX=0");
+            }
+            else if (Target.IsInPlatformGroup(UnrealPlatformGroup.Unix))
+            {
+                PublicDefinitions.Add("GTEST_OS_LINUX=1");
+                PublicDefinitions.Add("GTEST_OS_WINDOWS=0");
+                PublicDefinitions.Add("GTEST_OS_MAC=0");
+            }
+
             PublicDefinitions.Add("GTEST_OS_WINDOWS_MOBILE=0");
             PublicDefinitions.Add("GTEST_OS_LINUX_ANDROID=0");
-            PublicDefinitions.Add("GTEST_OS_LINUX=0");
-            PublicDefinitions.Add("GTEST_OS_MAC=0");
             PublicDefinitions.Add("GTEST_OS_HPUX=0");
             PublicDefinitions.Add("GTEST_OS_QNX=0");
             PublicDefinitions.Add("GTEST_OS_FREEBSD=0");

@@ -1,0 +1,76 @@
+// Copy these contents to ShapeArt.code-workspace
+
+{
+	"folders": [
+		{
+			"name": "ShapeArt",
+			"path": "."
+		},
+		{
+			"name": "UE5",
+			"path": "../../UE5" // Change this if needed
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"ms-dotnettools.csharp",
+			"matepek.vscode-catch2-test-adapter"
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Run Tests",
+				"request": "launch",
+				"program": "${workspaceFolder:ShapeArt}/Binaries/Linux/Tests",
+				"preLaunchTask": "Tests Build",
+				"args": [],
+				"type": "cppdbg",
+				"cwd": "${workspaceFolder:UE5}"
+			}
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Tests Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Tests",
+					"Development",
+					"Linux",
+					"${workspaceFolder:ShapeArt}/ShapeArt.uproject",
+					"-waitmutex"
+				]
+				,
+				"options": {
+					"cwd": "${workspaceFolder:UE5}"
+				},
+				"problemMatcher": "$msCompile",
+				"type": "shell"
+			},
+			{
+				"label": "Tests Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"Tests",
+					"Development",
+					"Linux",
+					"${workspaceFolder:ShapeArt}/ShapeArt.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "${workspaceFolder:UE5}"
+				}
+			}
+		]
+	}
+}

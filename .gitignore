@@ -78,3 +78,4 @@ TestResults/*
 
 # VS Code
 .vscode
+*.code-workspace

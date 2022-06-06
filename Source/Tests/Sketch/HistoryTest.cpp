@@ -2,11 +2,12 @@
 #include "gtest/gtest.h"
 #include <stdexcept>
 
+
 class HistoryTest : public ::testing::Test {
 protected:
     THistory<int>* History = new THistory<int>;
 
-    void PostTestValues(int Count) {
+    void PostValueSeries(int Count) {
         for(int i = 10; i <= Count * 10; i += 10) {
             History->Post(i);
         }
@@ -24,7 +25,7 @@ protected:
         }
     }
 
-    void Post(int Value) { History->Post(Value); }
+    void PostValue(int Value) { History->Post(Value); }
 
     THistory<int>::THistoryNode* GetCurrent() { return History->GetCurrent(); }
 
@@ -35,20 +36,21 @@ protected:
     bool IsHead() { return History->IsHead(); }
 
     bool IsTail() { return History->IsTail(); }
+
 };
 
 TEST_F(HistoryTest, GetCurrent) {
-    Post(10);
+    PostValue(10);
     EXPECT_NE(GetCurrent(), nullptr);
     EXPECT_EQ(GetCurrentValue(), 10);
 
-    Post(25);
+    PostValue(25);
     EXPECT_NE(GetCurrent(), nullptr);
     EXPECT_EQ(GetCurrentValue(), 25);
 }
 
 TEST_F(HistoryTest, StepPrevious) {
-    PostTestValues(4);
+    PostValueSeries(4);
     
     for(int expected = 30; expected >= 10; expected -= 10) {
         StepPrevious();
@@ -57,16 +59,16 @@ TEST_F(HistoryTest, StepPrevious) {
 }
 
 TEST_F(HistoryTest, StepPreviousAndPost) {
-    PostTestValues(3);
+    PostValueSeries(3);
     StepPrevious(2);
-    Post(99);
+    PostValue(99);
     
     EXPECT_EQ(GetCurrentValue(), 99);
 }
 
 
 TEST_F(HistoryTest, StepNext) {
-    PostTestValues(4);
+    PostValueSeries(4);
 
     StepPrevious(4);
 
@@ -76,9 +78,26 @@ TEST_F(HistoryTest, StepNext) {
     }
 }
 
+TEST_F(HistoryTest, OverstepTail) {
+    PostValue(10);
+    EXPECT_THROW(StepNext(), std::out_of_range);
+}
+
+TEST_F(HistoryTest, OverstepHead) {
+    PostValueSeries(10);
+    StepPrevious(10);
+    EXPECT_THROW(StepPrevious(), std::out_of_range);
+}
+
+TEST_F(HistoryTest, GetCurrentOnHead) {
+    PostValueSeries(10);
+    StepPrevious(10);
+    EXPECT_THROW(GetCurrentValue(), std::out_of_range);
+}
+
 TEST_F(HistoryTest, IsHead) {
     EXPECT_TRUE(IsHead());
-    Post(1);
+    PostValue(1);
     EXPECT_FALSE(IsHead());
     StepPrevious();
     EXPECT_TRUE(IsHead());
@@ -88,7 +107,7 @@ TEST_F(HistoryTest, IsHead) {
 
 TEST_F(HistoryTest, IsTail) {
     EXPECT_TRUE(IsTail());
-    Post(1);
+    PostValue(1);
     EXPECT_TRUE(IsTail());
     StepPrevious();
     EXPECT_FALSE(IsTail());
@@ -97,6 +116,6 @@ TEST_F(HistoryTest, IsTail) {
 }
 
 TEST_F(HistoryTest, DeleteHistory) {
-    PostTestValues(100);
+    PostValueSeries(100);
     delete History;
 }

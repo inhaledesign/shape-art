@@ -13,7 +13,7 @@ public:
 
     int GetSize() { return Size; }
     
-    FVector GetVertex(int Index) { return Vertices.GetData()[Index]; }
+    FVector GetVertex(int Index) { return Vertices[Index]; }
     
     void SetVertex(int Index, double X, double Y) {
         FVector& Vertex = Vertices[Index];
