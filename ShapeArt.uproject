@@ -18,6 +18,20 @@
 			"Name": "Sketch",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "Tests",
+			"Type": "Program",
+			"TargetAllowList": [
+				"Program"
+			]
+		},
+		{
+			"Name": "GoogleTestModule",
+			"Type": "Program",
+			"TargetAllowList": [
+				"Program"
+			]
 		}
 	],
 	"Plugins": [

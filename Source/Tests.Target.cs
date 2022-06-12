@@ -1,6 +1,4 @@
 using UnrealBuildTool;
-using System.Collections.Generic;
-using System.IO;
  
 public class TestsTarget : TargetRules
 {
@@ -13,6 +11,7 @@ public class TestsTarget : TargetRules
         bIsBuildingConsoleApplication = true;
         bCompileAgainstEngine = false;
         bCompileAgainstCoreUObject = false;
+        bCompileAgainstApplicationCore	= false;
 
         // Keeps macro definitions in Tests.Build.cs from throwing errors.
         // Note: The space at the beginning of the string is necessary, otherwise the first argument is ignored.

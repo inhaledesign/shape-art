@@ -1,0 +1,77 @@
+// Please make sure to run:
+// git update-index --assume-unchanged *.code-workspace
+// to avoid accidentally commiting personal changes to this file.
+
+{
+	"folders": [
+		{
+			"name": "ShapeArt",
+			"path": "."
+		},
+		{
+			"name": "UE5",
+			"path": "C:\\Path\\to\\UE5" // Make sure you set this!
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"ms-dotnettools.csharp",
+			"matepek.vscode-catch2-test-adapter"
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Run Tests",
+				"request": "launch",
+				"program": "${workspaceFolder:ShapeArt}\\Binaries\\Win64\\Tests.exe",
+				"preLaunchTask": "Tests Build",
+				"args": [],
+				"type": "cppvsdbg",
+				"cwd": "${workspaceFolder:UE5}"
+			}
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Tests Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"Tests",
+					"Development",
+					"Win64",
+					"${workspaceFolder:ShapeArt}\\ShapeArt.uproject",
+					"-waitmutex"
+				]
+				,
+				"options": {
+					"cwd": "${workspaceFolder:UE5}"
+				},
+				"problemMatcher": "$msCompile",
+				"type": "shell"
+			},
+			{
+				"label": "Tests Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"Tests",
+					"Development",
+					"Win64",
+					"${workspaceFolder:ShapeArt}\\ShapeArt.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "${workspaceFolder:UE5}"
+				}
+			}
+		]
+	}
+}

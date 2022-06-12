@@ -12,8 +12,8 @@ public class Tests : ModuleRules
 		bEnableExceptions = true;
 		
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "GoogleTestModule" });
-		PrivateDependencyModuleNames.AddRange(new string[] { "Sketch" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core" });
+		PrivateDependencyModuleNames.AddRange(new string[] { "Sketch", "GoogleTestModule" });
 	}
 }
 }

@@ -1,17 +1,5 @@
-
-# Overview
-Currently only supports VS Code for Windows, due to dead-end in getting GoogleTest to compile in Linux.
-
-# IDE Setup 
-
-## VS Code
-
-Open ShapeArt in UnrealEditor. Go to `Tools > Refresh` Visual Studio Code Project.
-
-## Tests
-1. Install the C++ TestMate extension.
-2. In the TestMate extension setting, set "Test: Executables" to `Binaries/Win64/Tests.exe` or `Binaries/Linux/Tests`.
-3. Copy the contents of the platform appropriate `code-workspace.example` file into `ShapeArt.code-workspace`.
-
+## Setup
+1. Copy the contents of the platform appropriate `code-workspace.example` file into `ShapeArt.code-workspace`.
+2. Install the C++ GoogleTest Adapter extension and choose `Run Tests` as the debug config.
 
 You'll now have launch configuration called Run Tests. This will build and launch the test executable.
