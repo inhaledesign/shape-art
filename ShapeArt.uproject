@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{5BDD6A0B-4FE8-C691-CF88-C8B0D76B3BB9}",
+	"EngineAssociation": "{80C33E87-560E-4E0A-9B07-80C8F8D884B8}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -11,7 +11,8 @@
 			"AdditionalDependencies": [
 				"Engine",
 				"ProceduralMeshComponent",
-				"FunctionalTesting"
+				"FunctionalTesting",
+				"CoreUObject"
 			]
 		},
 		{
@@ -22,6 +23,7 @@
 		{
 			"Name": "Tests",
 			"Type": "Program",
+			"LoadingPhase": "Default",
 			"TargetAllowList": [
 				"Program"
 			]
@@ -29,6 +31,7 @@
 		{
 			"Name": "GoogleTestModule",
 			"Type": "Program",
+			"LoadingPhase": "Default",
 			"TargetAllowList": [
 				"Program"
 			]
