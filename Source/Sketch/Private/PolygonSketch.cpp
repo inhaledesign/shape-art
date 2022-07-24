@@ -22,13 +22,12 @@ TArray<int32> PolygonSketch::GenerateTriangles() {
 
 TArray<FVector> PolygonSketch::GenerateNormals() {
     TArray<FVector> Normals;
-	Normals.Add(FVector(0, 0, 1));
-	Normals.Add(FVector(0, 0, 1));
-	Normals.Add(FVector(0, 0, 1));	
+    Normals.Init(FVector(0, 0, 1), Size);	
     return Normals;
 }
 
 TArray<FVector2D> PolygonSketch::GenerateUV() {
+    // TODO: This only works for a triangle
 	TArray<FVector2D> UV;
 	UV.Add(FVector2D(0, 0));
 	UV.Add(FVector2D(1, 0));

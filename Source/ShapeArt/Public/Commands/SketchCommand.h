@@ -6,14 +6,12 @@
 
 
 UINTERFACE(MinimalAPI)
-class USketchCommand : public UInterface
-{
+class USketchCommand : public UInterface {
 	GENERATED_BODY()
 };
 
 
-class SHAPEART_API ISketchCommand
-{
+class SHAPEART_API ISketchCommand {
 	GENERATED_BODY()
 
 public:

@@ -23,6 +23,8 @@ void ASketchController::Redo_Implementation() {
 }
 
 void ASketchController::AddTriangle_Implementation() {
-    TScriptInterface<ISketchCommand> Command = NewObject<UAddTriangleCommand>();
-    RunCommand(Command);
+    TScriptInterface<ISketchCommand> CommandInterface = NewObject<UAddTriangleCommand>();
+    UAddTriangleCommand* Command = (UAddTriangleCommand*) CommandInterface.GetInterface();
+    Command->SetLocation(0, 0);
+    RunCommand(CommandInterface);
 }
