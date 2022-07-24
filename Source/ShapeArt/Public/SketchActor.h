@@ -18,11 +18,6 @@ class SHAPEART_API ASketchActor : public AActor
 	
 	void AddMaterialToMesh();
 	
-	void GenerateMeshFromPolygon();
-	
-	TArray<FProcMeshTangent> GenerateMeshTangents();
-	
-	TArray<FLinearColor> GenerateVertexColors();
 
 public:	
 
