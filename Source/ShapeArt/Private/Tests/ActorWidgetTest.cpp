@@ -3,6 +3,7 @@
 #include "Misc/AutomationTest.h"
 #include "Tests/OpenTestMap.h"
 #include "SketchActor.h"
+#include "Widgets/SCanvas.h"
 
 BEGIN_DEFINE_SPEC(FActorWidgetTest, "ShapeArt.ActorWidget", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
     UWorld* World { nullptr };
@@ -17,18 +18,26 @@ void FActorWidgetTest::Define() {
         World = OpenTestMap(MapName);
     });
 
-    It("Actor Sticks On Construct", [this]() {
-        AActor* Actor = World->SpawnActor<ASketchActor>(Location, Rotation, SpawnParams);
-        TSharedPtr<SActorWidget> ActorWidget = SNew(SActorWidget)
-            .Actor(Actor);
-        GEngine->GameViewport->AddViewportWidgetContent(ActorWidget.ToSharedRef());
-        FGeometry Geometry { ActorWidget->GetPaintSpaceGeometry() };
-        FVector2D Position { Geometry.GetAbsolutePosition() };
+    It("Actor Sticks To Widget on Set", [this]() {
+        AActor* Actor { World->SpawnActor<ASketchActor>(Location, Rotation, SpawnParams) };
+        TSharedPtr<SActorWidget> ActorWidget = SNew(SActorWidget);
+
+        ActorWidget->SetActor(Actor);
+
+        TSharedPtr<SCanvas> CanvasWidget = SNew(SCanvas)
+            + SCanvas::Slot()
+            // TODO: This still puts widget at (0,0). Update with something that doesn't
+            .HAlign(HAlign_Center)
+            .VAlign(VAlign_Center)
+            [ ActorWidget.ToSharedRef() ];
+            
+        GEngine->GameViewport->AddViewportWidgetContent(CanvasWidget.ToSharedRef());
+        FGeometry WidgetGeometry { ActorWidget->GetPaintSpaceGeometry() };
+        FVector2D WidgetPosition { WidgetGeometry.GetAbsolutePosition() };
 
         FVector ActorLocation = Actor->GetActorLocation();
 
-        TestEqual("Actor Location X", ActorLocation[0], Position[0]);
-        TestEqual("Actor Location Y", ActorLocation[1], Position[1]);
+        TestEqual("Actor Location X", ActorLocation[0], WidgetPosition[0]);
+        TestEqual("Actor Location Y", ActorLocation[1], WidgetPosition[1]);
     });
-
 } 

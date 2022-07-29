@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "PolygonSketch.h"
 #include "SketchData.generated.h"
 
 
@@ -15,7 +16,5 @@ public:
 
     USketchData() {}
 
-	UPROPERTY(BlueprintReadOnly)
-	FString Label { FString("TESSST") };
-
+	PolygonSketch Polygon { PolygonSketch(3) };
 };

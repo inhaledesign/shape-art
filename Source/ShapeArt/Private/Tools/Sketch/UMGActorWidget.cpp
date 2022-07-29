@@ -6,7 +6,6 @@ void UActorWidget::ReleaseSlateResources(bool bReleaseChildren) {
 }
 
 TSharedRef<SWidget> UActorWidget::RebuildWidget() {
-  ActorWidget = SNew(SActorWidget)
-    .Actor(Actor);
+  ActorWidget = SNew(SActorWidget);
   return ActorWidget.ToSharedRef();
 } 
