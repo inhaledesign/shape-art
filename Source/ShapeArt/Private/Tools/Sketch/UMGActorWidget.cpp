@@ -8,4 +8,10 @@ void UActorWidget::ReleaseSlateResources(bool bReleaseChildren) {
 TSharedRef<SWidget> UActorWidget::RebuildWidget() {
   ActorWidget = SNew(SActorWidget);
   return ActorWidget.ToSharedRef();
-} 
+}
+
+void UActorWidget::UpdateActorLocation() {
+  if(ActorWidget != nullptr) {
+    ActorWidget->UpdateActorLocation();
+  }
+}

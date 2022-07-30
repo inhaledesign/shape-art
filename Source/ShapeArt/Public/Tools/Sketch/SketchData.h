@@ -5,8 +5,6 @@
 #include "SketchData.generated.h"
 
 
-// ListView will only use data object that are classes. Structs do not work. /shrug
-
 UCLASS(Blueprintable)
 class SHAPEART_API USketchData : public UObject {
 
@@ -14,7 +12,11 @@ class SHAPEART_API USketchData : public UObject {
 
 public:
 
-    USketchData() {}
+    USketchData() {
+		Polygon.SetVertex(0, 0, 0);
+		Polygon.SetVertex(1, 0, 100);
+		Polygon.SetVertex(2, 100, 0);
+	}
 
 	PolygonSketch Polygon { PolygonSketch(3) };
 };

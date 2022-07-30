@@ -13,6 +13,9 @@ class SHAPEART_API UActorWidget : public UWidget
 public:
   virtual void ReleaseSlateResources(bool bReleaseChildren) override;
 
+  UFUNCTION(BlueprintCallable)
+  void UpdateActorLocation();
+
 protected:
   
   TSharedPtr<SActorWidget> ActorWidget;

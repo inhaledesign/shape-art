@@ -3,7 +3,7 @@
 #include "Misc/AutomationTest.h"
 #include "Tests/OpenTestMap.h"
 #include "SketchActor.h"
-#include "Widgets/SCanvas.h"
+#include "Widgets/SBoxPanel.h"
 
 BEGIN_DEFINE_SPEC(FActorWidgetTest, "ShapeArt.ActorWidget", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
     UWorld* World { nullptr };
@@ -24,11 +24,11 @@ void FActorWidgetTest::Define() {
 
         ActorWidget->SetActor(Actor);
 
-        TSharedPtr<SCanvas> CanvasWidget = SNew(SCanvas)
-            + SCanvas::Slot()
-            // TODO: This still puts widget at (0,0). Update with something that doesn't
+        TSharedPtr<SHorizontalBox> CanvasWidget = SNew(SHorizontalBox)
+            + SHorizontalBox::Slot()
             .HAlign(HAlign_Center)
             .VAlign(VAlign_Center)
+            .Padding(10)
             [ ActorWidget.ToSharedRef() ];
             
         GEngine->GameViewport->AddViewportWidgetContent(CanvasWidget.ToSharedRef());
