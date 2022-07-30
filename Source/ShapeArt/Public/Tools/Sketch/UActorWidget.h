@@ -1,8 +1,8 @@
 #pragma once
 
-#include "SlateActorWidget.h"
+#include "SActorWidget.h"
 #include "Components/Widget.h"
-#include "UMGActorWidget.generated.h"
+#include "UActorWidget.generated.h"
 
 UCLASS()
 class SHAPEART_API UActorWidget : public UWidget

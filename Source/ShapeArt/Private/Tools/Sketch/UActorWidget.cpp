@@ -1,4 +1,4 @@
-#include "Tools/Sketch/UMGActorWidget.h"
+#include "Tools/Sketch/UActorWidget.h"
 
 
 void UActorWidget::ReleaseSlateResources(bool bReleaseChildren) {

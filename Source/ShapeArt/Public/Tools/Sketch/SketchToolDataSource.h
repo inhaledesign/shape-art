@@ -3,8 +3,8 @@
 #include "CoreMinimal.h"
 #include "SketchActor.h"
 #include "Tools/Sketch/SketchData.h"
-#include "Tools/Sketch/UMGActorWidget.h"
-#include "Tools/Sketch/SlateActorWidget.h"
+#include "Tools/Sketch/UActorWidget.h"
+#include "Tools/Sketch/SActorWidget.h"
 #include "SketchToolDataSource.generated.h"
 
 
@@ -17,7 +17,6 @@ class SHAPEART_API USketchToolDataSource: public UObject
 
 	USketchToolDataSource() {}
 	
-	// TODO: Can we make this Private and then specify a public getter in the metadata?
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TArray<UObject*> Data { TArray<UObject*>() };
 

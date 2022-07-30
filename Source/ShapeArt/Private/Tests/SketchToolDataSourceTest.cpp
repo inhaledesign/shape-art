@@ -3,7 +3,7 @@
 #include "SketchActor.h"
 #include "Tools/Sketch/SketchToolDataSource.h"
 #include "Tools/Sketch/SketchData.h"
-#include "Tools/Sketch/SlateActorWidget.h"
+#include "Tools/Sketch/SActorWidget.h"
 #include "SlateCore.h"
 #include "Widgets/Views/SListView.h"
 #include "PolygonSketch.h"

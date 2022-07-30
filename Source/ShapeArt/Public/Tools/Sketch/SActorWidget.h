@@ -20,5 +20,10 @@ public:
   AActor* GetActor() { return Actor; }
 
   void UpdateActorLocation();
-    
+
+private:
+
+  FVector2D GetWidgetViewportLocation();
+
+  FVector GetDeprojectedLocation(FVector2D WidgetLocation);
 };
