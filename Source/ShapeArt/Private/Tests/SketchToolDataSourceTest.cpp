@@ -10,7 +10,6 @@
 #include "Tests/OpenTestMap.h"
 
 
-
 // TODO: Update test to include world to spawn actors into.
 // Want to figure out how to reuse specs, since this seems to be a common theme.
 
