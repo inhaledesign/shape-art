@@ -23,6 +23,9 @@ public:
 
 	ASketchActor();
 
+	UFUNCTION(BlueprintCallable)
+	void SetSketch(const TArray<FVector>& Vertices);
+
 	void SetSketch(PolygonSketch& PolygonSketch);
 
 };

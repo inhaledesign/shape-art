@@ -17,7 +17,7 @@ class SHAPEART_API ASketchController : public APlayerController
 	ASketchGameState* GetGameState() {
 		UWorld* World = GetWorld();
 		return Cast<ASketchGameState>(UGameplayStatics::GetGameState(World));
-	}
+	}	
 
 	void RunCommand(TScriptInterface<ISketchCommand> Command) {
 		GetGameState()->RunCommand(Command);

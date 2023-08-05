@@ -1,9 +1,7 @@
-.git
-.vs
 .vscode
-Content
 DerivedDataCache
-Docs
+Content
 Intermediate
 Saved
-Script
+Docs
+.git

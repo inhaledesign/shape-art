@@ -15,7 +15,6 @@ void ASketchActor::InitMesh() {
 		UE_LOG(LogTemp, Error, TEXT("Could not create Mesh object"));
 		throw "Could not create Mesh object";
 	}
-	SetRootComponent(Mesh);
 }
 
 void ASketchActor::AddMaterialToMesh() {
@@ -28,6 +27,18 @@ void ASketchActor::AddMaterialToMesh() {
 	}
 
 	Mesh->SetMaterial(0, Material);
+}
+
+void ASketchActor::SetSketch(const TArray<FVector>& Vertices) {
+	auto Size { Vertices.Num() };
+	PolygonSketch Sketch = PolygonSketch(Size);
+
+	for (int i = 0; i < Size; i++) {
+		FVector2D Vertex { Vertices[i] };
+		Sketch.SetVertex(i, Vertex[0], Vertex[1]);
+	}
+
+	SetSketch(Sketch);
 }
 
 void ASketchActor::SetSketch(PolygonSketch& PolygonSketch) {
