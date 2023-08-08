@@ -24,7 +24,9 @@ public:
 	bool IsHistoryAtTail() { return History.IsTail(); }
 
 	void RunCommand(const TScriptInterface<ISketchCommand>& Command);
+	
 	void Undo();
+	
 	void Redo();
 
 };

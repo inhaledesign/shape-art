@@ -12,6 +12,7 @@ void ASketchController::BeginPlay() {
 void ASketchController::SetupMouseInput() {
     SetInputMode(FInputModeGameAndUI());
     bShowMouseCursor = true;
+    bEnableClickEvents = true;
 }
 
 void ASketchController::Undo_Implementation() {

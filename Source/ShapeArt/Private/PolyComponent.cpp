@@ -3,8 +3,7 @@
 #include "MeshGenerator.h"
 
 
-UPolyComponent::UPolyComponent()
-{
+UPolyComponent::UPolyComponent() {
 	PrimaryComponentTick.bCanEverTick = false;
 	InitMesh();
 	AddMaterialToMesh();
@@ -17,7 +16,6 @@ void UPolyComponent::BeginPlay() {
 }
 
 void UPolyComponent::SetVertices(const TArray<FVector>& NewVertices) { Vertices = NewVertices; }
-
 
 void UPolyComponent::InitMesh() {
     Mesh = CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("ProceduralMeshComponent"));
@@ -40,9 +38,7 @@ void UPolyComponent::AddMaterialToMesh() {
 }
 
 void UPolyComponent::BuildMesh() {
-    if (Vertices.Num() < 3) {
-        return;
-	}
+    if (Vertices.Num() < 3) { return; }
 
 	auto Generator { MeshGenerator(&Vertices) };
 	Generator.AddToMesh(Mesh);

@@ -14,9 +14,8 @@ void AShapeArtGameMode::SetupDefaultClasses() {
 }
 
 void AShapeArtGameMode::SetupPrimaryActorProperties() {
-    PrimaryActorTick.bCanEverTick = false;
-    PrimaryActorTick.bStartWithTickEnabled = false;
-    PrimaryActorTick.bAllowTickOnDedicatedServer = false;
+    PrimaryActorTick.bCanEverTick = true;
+    PrimaryActorTick.bStartWithTickEnabled = true;
 }
 
 void AShapeArtGameMode::SetupWorldProperties() {

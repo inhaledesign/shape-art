@@ -9,12 +9,11 @@
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class SHAPEART_API UPolyComponent : public USceneComponent
-{
+class SHAPEART_API UPolyComponent : public USceneComponent {
+	
 	GENERATED_BODY()
 
 public:	
-
 	UPolyComponent();
 
 	void BeginPlay();

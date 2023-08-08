@@ -11,7 +11,9 @@ class SHAPEART_API AShapeArtGameMode : public AGameModeBase
 	GENERATED_BODY()
 
 	void SetupDefaultClasses();
+
 	void SetupPrimaryActorProperties();
+	
 	void SetupWorldProperties();
 
 public:
