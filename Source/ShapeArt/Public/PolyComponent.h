@@ -12,7 +12,7 @@ UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class SHAPEART_API UPolyComponent : public USceneComponent {
 	
 	GENERATED_BODY()
-
+																																
 public:	
 	UPolyComponent();
 
@@ -21,16 +21,16 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "ShapeArt")
 	void SetVertices(const TArray<FVector>& Vertices);
 
-protected:
+protected:								
 	UPROPERTY(EditAnywhere, BlueprintSetter="SetVertices", Category = "ShapeArt")
     TArray<FVector> Vertices;
 
 private:
     UProceduralMeshComponent* Mesh;
 
-	void InitMesh();
+	void InitMesh();																																																																																																																																
 
-	void BuildMesh();
+	void BuildMesh();																
 
 	void AddMaterialToMesh();
 

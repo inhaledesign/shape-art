@@ -19,9 +19,7 @@ class SHAPEART_API ASketchController : public APlayerController
 		return Cast<ASketchGameState>(UGameplayStatics::GetGameState(World));
 	}	
 
-	void RunCommand(TScriptInterface<ISketchCommand> Command) {
-		GetGameState()->RunCommand(Command);
-	}
+	void RunCommand(TScriptInterface<ISketchCommand> Command) { GetGameState()->RunCommand(Command); }
 
 	void SetupMouseInput();
 	
@@ -36,4 +34,5 @@ public:
 
 	UFUNCTION(Server, Reliable, BlueprintCallable)
 	void Redo();
+
 };
