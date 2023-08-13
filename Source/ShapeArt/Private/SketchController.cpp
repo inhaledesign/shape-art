@@ -29,3 +29,7 @@ void ASketchController::AddTriangle_Implementation() {
     Command->SetLocation(0, 0);
     RunCommand(CommandInterface);
 }
+
+void ASketchController::AddPoly_Implementation(const UPolyComponent* Poly) {
+    
+}

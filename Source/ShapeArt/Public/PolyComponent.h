@@ -1,5 +1,3 @@
-
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -20,6 +18,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "ShapeArt")
 	void SetVertices(const TArray<FVector>& Vertices);
+
+	void Copy(const UPolyComponent* FromPoly);
 
 protected:								
 	UPROPERTY(EditAnywhere, BlueprintSetter="SetVertices", Category = "ShapeArt")

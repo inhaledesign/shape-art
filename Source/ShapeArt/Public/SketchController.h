@@ -6,9 +6,10 @@
 #include "Commands/SketchCommand.h"
 #include "History.h"
 #include "SketchGameState.h"
+#include "PolyComponent.h"
 #include "SketchController.generated.h"
 
-
+ 
 UCLASS()
 class SHAPEART_API ASketchController : public APlayerController
 {
@@ -17,7 +18,7 @@ class SHAPEART_API ASketchController : public APlayerController
 	ASketchGameState* GetGameState() {
 		UWorld* World = GetWorld();
 		return Cast<ASketchGameState>(UGameplayStatics::GetGameState(World));
-	}	
+	}
 
 	void RunCommand(TScriptInterface<ISketchCommand> Command) { GetGameState()->RunCommand(Command); }
 
@@ -34,5 +35,8 @@ public:
 
 	UFUNCTION(Server, Reliable, BlueprintCallable)
 	void Redo();
+
+	UFUNCTION(Server, Reliable, BlueprintCallable)
+	void AddPoly(const UPolyComponent* Poly);
 
 };
