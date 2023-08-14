@@ -31,7 +31,7 @@ void FPolyGroupActorTest::Define() {
         UPolyComponent* Poly { NewObject<UPolyComponent>() };
 
         for(int i = 1; i <= 10; i++) {
-            PolyGroup->AddPoly(Poly);
+            PolyGroup->AddPoly(Poly, Location);
             int N { ComponentCount(UPolyComponent::StaticClass()) };
             TestEqual("PolyComponent count", N, i);
         }

@@ -18,12 +18,7 @@ void UPolyComponent::BeginPlay() {
 void UPolyComponent::SetVertices(const TArray<FVector>& NewVertices) { Vertices = NewVertices; }
 
 void UPolyComponent::Copy(const UPolyComponent* FromPoly) {
-	FVector Location { FromPoly->GetComponentLocation() };
-	FTransform Transform { FromPoly->GetComponentTransform() };
-
-	// SetWorldLocation(Location);
 	SetVertices(FromPoly->Vertices); 
-	
 }
 
 void UPolyComponent::InitMesh() {
