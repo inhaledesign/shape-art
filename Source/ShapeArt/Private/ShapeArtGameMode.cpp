@@ -1,6 +1,6 @@
 #include "ShapeArtGameMode.h"
-#include "SketchController.h"
-#include "SketchGameState.h"
+#include "CanvasController.h"
+#include "CanvasGameState.h"
 
 AShapeArtGameMode::AShapeArtGameMode() {
     SetupDefaultClasses();
@@ -9,8 +9,8 @@ AShapeArtGameMode::AShapeArtGameMode() {
 }
 
 void AShapeArtGameMode::SetupDefaultClasses() {
-    PlayerControllerClass = ASketchController::StaticClass();
-    GameStateClass = ASketchGameState::StaticClass();
+    PlayerControllerClass = ACanvasController::StaticClass();
+    GameStateClass = ACanvasGameState::StaticClass();
 }
 
 void AShapeArtGameMode::SetupPrimaryActorProperties() {

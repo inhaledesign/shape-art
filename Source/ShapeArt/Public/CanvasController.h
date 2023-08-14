@@ -3,24 +3,24 @@
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
-#include "Commands/SketchCommand.h"
+#include "Commands/CanvasCommand.h"
 #include "History.h"
-#include "SketchGameState.h"
+#include "CanvasGameState.h"
 #include "PolyComponent.h"
-#include "SketchController.generated.h"
+#include "CanvasController.generated.h"
 
  
 UCLASS()
-class SHAPEART_API ASketchController : public APlayerController
+class SHAPEART_API ACanvasController : public APlayerController
 {
 	GENERATED_BODY()
 
-	ASketchGameState* GetGameState() {
+	ACanvasGameState* GetGameState() {
 		UWorld* World = GetWorld();
-		return Cast<ASketchGameState>(UGameplayStatics::GetGameState(World));
+		return Cast<ACanvasGameState>(UGameplayStatics::GetGameState(World));
 	}
 
-	void RunCommand(TScriptInterface<ISketchCommand> Command) { GetGameState()->RunCommand(Command); }
+	void RunCommand(TScriptInterface<ICanvasCommand> Command) { GetGameState()->RunCommand(Command); }
 
 	void SetupMouseInput();
 	

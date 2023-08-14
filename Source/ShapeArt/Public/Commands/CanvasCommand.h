@@ -2,16 +2,16 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
-#include "SketchCommand.generated.h"
+#include "CanvasCommand.generated.h"
 
 
 UINTERFACE(MinimalAPI)
-class USketchCommand : public UInterface {
+class UCanvasCommand : public UInterface {
 	GENERATED_BODY()
 };
 
 
-class SHAPEART_API ISketchCommand {
+class SHAPEART_API ICanvasCommand {
 	GENERATED_BODY()
 
 public:

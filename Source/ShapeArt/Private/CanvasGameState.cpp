@@ -1,23 +1,23 @@
-#include "SketchGameState.h"
+#include "CanvasGameState.h"
 
 
-void ASketchGameState::RunCommand(const TScriptInterface<ISketchCommand>&Command) {
+void ACanvasGameState::RunCommand(const TScriptInterface<ICanvasCommand>&Command) {
     UWorld* World { GetWorld() };
     UObject* CommandObject { Command.GetObject() };
-    ISketchCommand::Execute_Execute(CommandObject, World);
+    ICanvasCommand::Execute_Execute(CommandObject, World);
     History.Post(CommandObject);
 }
 
-void ASketchGameState::Undo() {
+void ACanvasGameState::Undo() {
     UWorld* World { GetWorld() };
     UObject* CommandObject { History.GetCurrent()->GetValue() };
-    ISketchCommand::Execute_Undo(CommandObject);
+    ICanvasCommand::Execute_Undo(CommandObject);
     History.StepPrevious();
 }
 
-void ASketchGameState::Redo() {
+void ACanvasGameState::Redo() {
     UWorld* World { GetWorld() };
     History.StepNext();
     UObject* CommandObject { History.GetCurrent()->GetValue() };
-    ISketchCommand::Execute_Execute(CommandObject, World);
+    ICanvasCommand::Execute_Execute(CommandObject, World);
 }
