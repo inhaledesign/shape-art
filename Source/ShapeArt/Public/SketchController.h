@@ -26,17 +26,11 @@ class SHAPEART_API ASketchController : public APlayerController
 	
 public:
 	virtual void BeginPlay() override;
-	
-	UFUNCTION(Server, Reliable, BlueprintCallable)
-	void AddTriangle();
 
 	UFUNCTION(Server, Reliable, BlueprintCallable)
 	void Undo();
 
 	UFUNCTION(Server, Reliable, BlueprintCallable)
 	void Redo();
-
-	UFUNCTION(Server, Reliable, BlueprintCallable)
-	void AddPoly(const UPolyComponent* Poly);
 
 };
