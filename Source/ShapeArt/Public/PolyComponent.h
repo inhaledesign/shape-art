@@ -16,14 +16,12 @@ public:
 
 	void BeginPlay();
 
-	UFUNCTION(BlueprintCallable, Category = "ShapeArt")
-	void SetVertices(const TArray<FVector>& Vertices);
-
 	void Copy(const UPolyComponent* FromPoly);
-
-protected:								
-	UPROPERTY(EditAnywhere, BlueprintSetter="SetVertices", Category = "ShapeArt")
+				
+	UPROPERTY(EditAnywhere, Category = "ShapeArt")
     TArray<FVector> Vertices;
+
+	void Destroy();
 
 private:
     UProceduralMeshComponent* Mesh;

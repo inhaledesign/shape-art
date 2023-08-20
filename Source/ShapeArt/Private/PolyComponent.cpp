@@ -5,6 +5,7 @@
 
 UPolyComponent::UPolyComponent() {
 	PrimaryComponentTick.bCanEverTick = false;
+	bAllowAnyoneToDestroyMe = true;
 	InitMesh();
 	AddMaterialToMesh();
 }
@@ -15,10 +16,8 @@ void UPolyComponent::BeginPlay() {
 	USceneComponent::BeginPlay();
 }
 
-void UPolyComponent::SetVertices(const TArray<FVector>& NewVertices) { Vertices = NewVertices; }
-
 void UPolyComponent::Copy(const UPolyComponent* FromPoly) {
-	SetVertices(FromPoly->Vertices); 
+	Vertices = FromPoly->Vertices; 
 }
 
 void UPolyComponent::InitMesh() {
@@ -49,3 +48,9 @@ void UPolyComponent::BuildMesh() {
 }
 
 void UPolyComponent::AttachMesh() {	Mesh->AttachToComponent(this, FAttachmentTransformRules::KeepRelativeTransform); }
+
+void UPolyComponent::Destroy() {
+	Mesh->DestroyComponent();
+	Mesh = nullptr;
+	DestroyComponent();
+}

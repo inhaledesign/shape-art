@@ -23,7 +23,7 @@ void FPolyGroupActorTest::Define() {
     });
 
     It("Initialize", [this]() {
-        int N { ComponentCount(UActorComponent::StaticClass()) };
+        int N { ComponentCount(UPolyComponent::StaticClass()) };
         TestEqual("Component count", N, 0);
     });
 

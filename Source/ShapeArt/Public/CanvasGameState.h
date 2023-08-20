@@ -2,31 +2,38 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameStateBase.h"
-#include "History.h"
+#include "Commands/CommandHistory.h"
 #include "Commands/CanvasCommand.h"
+#include "PolyGroupActor.h"
 #include "CanvasGameState.generated.h"
 
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FHistoryChangedEvent);
+
 UCLASS()
 class SHAPEART_API ACanvasGameState : public AGameStateBase {
+	
 	GENERATED_BODY()
 
-	THistory<UObject*> History {};
+	UCommandHistory* History { NewObject<UCommandHistory>() };
 
-	void UpdateHistoryHeadAndTailState();
+	UPROPERTY(BlueprintAssignable)
+	FHistoryChangedEvent HistoryChangedEvent;
 	
-public:
+public:	
 
 	UFUNCTION(BlueprintCallable)
-	bool IsHistoryAtHead() { return History.IsHead(); }
+	bool IsHistoryAtHead() { return History->UndoCount() == 0; }
 
 	UFUNCTION(BlueprintCallable)
-	bool IsHistoryAtTail() { return History.IsTail(); }
+	bool IsHistoryAtTail() { return History->RedoCount() == 0; }
 
-	void RunCommand(const TScriptInterface<ICanvasCommand>& Command);
+	void RunCommand(ICanvasCommand* Command, APolyGroupActor* Canvas);
 	
-	void Undo();
+	void Undo(APolyGroupActor* Canvas);
 	
-	void Redo();
+	void Redo(APolyGroupActor* Canvas);
+
+
 
 };

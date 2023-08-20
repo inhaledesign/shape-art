@@ -14,6 +14,9 @@ void ACanvasController::SetupMouseInput() {
     bEnableClickEvents = true;
 }
 
-void ACanvasController::Undo_Implementation() { GetGameState()->Undo();}
-
-void ACanvasController::Redo_Implementation() { GetGameState()->Redo(); }
+void ACanvasController::AddPoly(UPolyComponent *Poly, FVector Location, APolyGroupActor *Canvas) {
+    UAddPolyCommand* Command { NewObject<UAddPolyCommand>() };
+    Command->Location = Location;
+    Command->Vertices = Poly->Vertices;
+    GetGameState()->RunCommand(Command, Canvas);
+}

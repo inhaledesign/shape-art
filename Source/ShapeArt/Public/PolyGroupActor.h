@@ -15,5 +15,7 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	bool AddPoly(const UPolyComponent* Poly, const FVector WorldLocation);
+
+	UPolyComponent* AddPolyByVertices(TArray<FVector> Vertices, const FVector WorldLocation);
 	
 };

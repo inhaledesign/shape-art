@@ -1,23 +1,26 @@
 #include "CanvasGameState.h"
 
 
-void ACanvasGameState::RunCommand(const TScriptInterface<ICanvasCommand>&Command) {
-    UWorld* World { GetWorld() };
-    UObject* CommandObject { Command.GetObject() };
-    ICanvasCommand::Execute_Execute(CommandObject, World);
-    History.Post(CommandObject);
+void ACanvasGameState::RunCommand(ICanvasCommand* Command, APolyGroupActor* Canvas) {
+    Command->Execute(Canvas);
+    History->Post(Command);
+    HistoryChangedEvent.Broadcast();
 }
 
-void ACanvasGameState::Undo() {
-    UWorld* World { GetWorld() };
-    UObject* CommandObject { History.GetCurrent()->GetValue() };
-    ICanvasCommand::Execute_Undo(CommandObject);
-    History.StepPrevious();
+void ACanvasGameState::Undo(APolyGroupActor* Canvas) {
+    ICanvasCommand* Command { History->Undo() };
+
+    if(Command) { 
+        Command->Undo(Canvas); 
+        HistoryChangedEvent.Broadcast();
+    }
 }
 
-void ACanvasGameState::Redo() {
-    UWorld* World { GetWorld() };
-    History.StepNext();
-    UObject* CommandObject { History.GetCurrent()->GetValue() };
-    ICanvasCommand::Execute_Execute(CommandObject, World);
+void ACanvasGameState::Redo(APolyGroupActor* Canvas) {
+    ICanvasCommand* Command { History->Redo() };
+
+    if(Command) { 
+        Command->Execute(Canvas); 
+        HistoryChangedEvent.Broadcast();    
+    }
 }
