@@ -6,10 +6,10 @@
 #include "PolyGroupActor.generated.h"
 
 UCLASS(BlueprintType)
-class SHAPEART_API APolyGroupActor : public AActor
-{
-	GENERATED_BODY()
+class SHAPEART_API APolyGroupActor : public AActor {
 	
+	GENERATED_BODY()
+
 public:	
 	APolyGroupActor();
 	
