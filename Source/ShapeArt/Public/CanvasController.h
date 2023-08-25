@@ -37,4 +37,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void AddPoly(UPolyComponent* Poly, FVector Location, APolyGroupActor* Canvas);
 
+	UFUNCTION(BlueprintCallable)
+	bool GetMouseLocation(FVector& MouseLocation, float CameraDistance);
+
 };
