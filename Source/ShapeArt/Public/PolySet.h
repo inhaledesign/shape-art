@@ -6,16 +6,12 @@
 #include "UObject/NoExportTypes.h"
 #include "PolySet.generated.h"
 
-/**
- * 
- */
-UCLASS()
-class SHAPEART_API UPolySet : public UObject
-{
+
+USTRUCT(BlueprintType)
+struct SHAPEART_API FPolySet {
+
 	GENERATED_BODY()
-	
-	public:
 
-	UPolySet() {};
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString Name { "Basic" };
 };

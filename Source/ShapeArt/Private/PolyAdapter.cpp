@@ -1,7 +1,7 @@
 #include "PolyAdapter.h"
 
 UPolyAdapter::UPolyAdapter() {
-    UPolySet* Set { NewObject<UPolySet>() };
+    FPolySet* Set { NewObject<FPolySet>() };
     Sets.Add(Set);
 }
 
@@ -9,6 +9,6 @@ int UPolyAdapter::SetCount() {
     return Sets.Num();
 }
 
-UPolySet* UPolyAdapter::GetSet(int Index) {
+FPolySet* UPolyAdapter::GetSet(int Index) {
     return Sets[Index];
 }

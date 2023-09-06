@@ -14,7 +14,7 @@ class SHAPEART_API UPolyAdapter : public UObject
 
 	GENERATED_BODY()
 
-	TArray<UPolySet*> Sets { TArray<UPolySet*>() };
+	TArray<FPolySet*> Sets { TArray<FPolySet*>() };
 	
 	public:
 
@@ -22,5 +22,5 @@ class SHAPEART_API UPolyAdapter : public UObject
 
 	int SetCount();
 
-	UPolySet* GetSet(int Index);
+	FPolySet* GetSet(int Index);
 };
