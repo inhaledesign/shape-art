@@ -24,7 +24,6 @@ void UPolyComponent::InitMesh() {
     Mesh = CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("ProceduralMeshComponent"));
 	if(Mesh == nullptr) {
 		UE_LOG(LogTemp, Error, TEXT("Could not create Mesh object"));
-		throw "Could not create Mesh object";
 	}
 }
 
@@ -34,7 +33,6 @@ void UPolyComponent::AddMaterialToMesh() {
 
 	if(Material == nullptr) {
 		UE_LOG(LogTemp, Error, TEXT("Material did not load: \"%s\""), MaterialPath);
-		throw "Material did not load";
 	}
 
 	Mesh->SetMaterial(0, Material);

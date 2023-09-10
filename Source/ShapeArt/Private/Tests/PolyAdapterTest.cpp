@@ -18,7 +18,6 @@ void FPolyAdapterTest::Define() {
     });
     It("Get Set", [this] {
         UPolySet* Set { Adapter->GetSet(0) };
-        TestNotNull("Not null", Set);
-        TestEqual("Name", "Basic", Set->Name);
+        TestNotNull("Set not null", Set);
     });
 }

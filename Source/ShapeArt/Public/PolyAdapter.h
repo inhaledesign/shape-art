@@ -1,5 +1,3 @@
-
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -14,13 +12,15 @@ class SHAPEART_API UPolyAdapter : public UObject
 
 	GENERATED_BODY()
 
-	TArray<FPolySet*> Sets { TArray<FPolySet*>() };
+	TArray<UPolySet*> Sets;
 	
 	public:
 
 	UPolyAdapter();
 
+	UFUNCTION(BlueprintCallable)
 	int SetCount();
 
-	FPolySet* GetSet(int Index);
+	UFUNCTION(BlueprintCallable)
+	UPolySet* GetSet(int Index);
 };

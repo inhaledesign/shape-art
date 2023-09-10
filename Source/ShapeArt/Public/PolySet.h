@@ -1,17 +1,19 @@
-
-
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "PolySet.generated.h"
 
 
-USTRUCT(BlueprintType)
-struct SHAPEART_API FPolySet {
+UCLASS(BlueprintType)
+class SHAPEART_API UPolySet : public UObject {
 
 	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FString Name { "Basic" };
+	public:
+
+	UPolySet() {}
+
+	UFUNCTION(BlueprintCallable)
+	FPolyData GetData(int Index);
+
 };

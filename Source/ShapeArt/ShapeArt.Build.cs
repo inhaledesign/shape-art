@@ -7,6 +7,7 @@ public class ShapeArt : ModuleRules
 	public ShapeArt(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+		bAddDefaultIncludePaths = true;
 	
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "Sketch", "UMG" });
 		PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
