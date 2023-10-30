@@ -6,7 +6,7 @@
 #include "PolyComponent.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(BlueprintType, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class SHAPEART_API UPolyComponent : public USceneComponent {
 	
 	GENERATED_BODY()
@@ -18,7 +18,7 @@ public:
 
 	void Copy(const UPolyComponent* FromPoly);
 				
-	UPROPERTY(EditAnywhere, Category = "ShapeArt")
+	UPROPERTY(BlueprintReadWrite, Category = "ShapeArt")
     TArray<FVector> Vertices;
 
 	void Destroy();
